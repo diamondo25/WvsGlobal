@@ -1,0 +1,21 @@
+﻿# This is the configuration file for memory regions
+# These are used by the client for CRC32. There's
+# a small randomness included to prevent simple
+# anti-anti-hack systems.
+#
+# There can be up to 0x7FFF blocks, but be cautious:
+# CRC32 does have an overhead.
+#
+# Empty lines and lines with # are skipped
+# These lines are regions of the binary. fileOffset is 
+# shown in IDA, left-bottom of IDA-View screen
+START_FILE_REGIONS
+# segment	startAddress	fileOffset
+seg000	00401000	00000400
+.idata	00635000	00233E00
+seg002	00635328	00234128
+seg003	00671000	0026FA00
+.rsrc	00684000	00279600
+
+START_MEMORY_REGIONS
+# Address	Size	Additional comment

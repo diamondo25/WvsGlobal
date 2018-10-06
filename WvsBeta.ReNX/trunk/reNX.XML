@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>reNX</name>
+    </assembly>
+    <members>
+        <member name="M:Assembine.ByteArrayPointer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Assembine.MemoryMappedFile.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:reNX.NXFile">
+            <summary>
+                An NX file.
+            </summary>
+        </member>
+        <member name="M:reNX.NXFile.#ctor(System.String,reNX.NXReadSelection)">
+            <summary>
+                Creates and loads a NX file from a path.
+            </summary>
+            <param name="path"> The path where the NX file is located. </param>
+            <param name="flag"> NX parsing flags. </param>
+        </member>
+        <member name="M:reNX.NXFile.#ctor(System.Byte[],reNX.NXReadSelection)">
+            <summary>
+                Creates and loads a NX file from a byte array.
+            </summary>
+            <param name="input"> The byte array containing the NX file. </param>
+            <param name="flag"> NX parsing flags. </param>
+        </member>
+        <member name="P:reNX.NXFile.BaseNode">
+            <summary>
+                The base node of this NX file.
+            </summary>
+        </member>
+        <member name="M:reNX.NXFile.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:reNX.NXFile.Finalize">
+            <summary>
+                Destructor.
+            </summary>
+        </member>
+        <member name="M:reNX.NXFile.ResolvePath(System.String)">
+            <summary>
+                Resolves a path in the form "/a/b/c/.././d/e/f/".
+            </summary>
+            <param name="path"> The path to resolve. </param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The path is invalid.</exception>
+        </member>
+        <member name="T:reNX.NXReadSelection">
+            <summary>
+                NX reading flags.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.None">
+            <summary>
+                No flags are enabled, that is, lazy loading of string, audio and bitmap properties is enabled. This is default.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.EagerParseStrings">
+            <summary>
+                Set this flag to disable lazy loading of string properties.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.EagerParseAudio">
+            <summary>
+                Set this flag to disable lazy loading of audio properties.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.EagerParseBitmap">
+            <summary>
+                Set this flag to disable lazy loading of bitmap properties.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.NeverParseBitmap">
+            <summary>
+                Set this flag to completely disable loading of bitmap properties. This takes precedence over EagerParseBitmap.
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.EagerParseFile">
+            <summary>
+                Set this flag to disable lazy loading of nodes (construct all nodes immediately).
+            </summary>
+        </member>
+        <member name="F:reNX.NXReadSelection.EagerParseAllProperties">
+            <summary>
+                Set this flag to disable lazy loading of string, audio and bitmap properties.
+            </summary>
+        </member>
+        <member name="T:reNX.NXProperties.NXNode">
+            <summary>
+                A node containing no value.
+            </summary>
+        </member>
+        <member name="F:reNX.NXProperties.NXNode._file">
+            <summary>
+                The NX file containing this node.
+            </summary>
+        </member>
+        <member name="F:reNX.NXProperties.NXNode._nodeData">
+            <summary>
+                The pointer to the <see cref="T:reNX.NXProperties.NXNode.NodeData" /> describing this node.
+            </summary>
+        </member>
+        <member name="P:reNX.NXProperties.NXNode.Name">
+            <summary>
+                The name of this node.
+            </summary>
+        </member>
+        <member name="P:reNX.NXProperties.NXNode.File">
+            <summary>
+                The file containing this node.
+            </summary>
+        </member>
+        <member name="P:reNX.NXProperties.NXNode.ChildCount">
+            <summary>
+                The number of children contained in this node.
+            </summary>
+        </member>
+        <member name="P:reNX.NXProperties.NXNode.Item(System.String)">
+            <summary>
+                Gets the child contained in this node that has the specified name.
+            </summary>
+            <param name="name"> The name of the child to get. </param>
+            <returns> The child with the specified name. </returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">
+                The node does not contain a child with name
+                <paramref name="name" />
+                .
+            </exception>
+        </member>
+        <member name="M:reNX.NXProperties.NXNode.GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+                A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:reNX.NXProperties.NXNode.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+                An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:reNX.NXProperties.NXNode.ContainsChild(System.String)">
+            <summary>
+                Returns true if this node contains a child with the specified name.
+            </summary>
+            <param name="name"> The name of the child to check. </param>
+            <returns> true if this node contains a child with the specified name; false otherwise </returns>
+        </member>
+        <member name="M:reNX.NXProperties.NXNode.GetChild(System.String)">
+            <summary>
+                Gets the child contained in this node that has the specified name.
+            </summary>
+            <param name="name"> The name of the child to get. </param>
+            <returns> The child with the specified name. </returns>
+        </member>
+        <member name="T:reNX.NXProperties.NXNode.NodeData">
+            <summary>
+                This structure describes a node.
+            </summary>
+        </member>
+        <member name="T:reNX.NXProperties.NXValuedNode`1">
+            <summary>
+                A node containing a value of type <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T"> The type of the contained value. </typeparam>
+        </member>
+        <member name="P:reNX.NXProperties.NXValuedNode`1.Value">
+            <summary>
+                The value contained by this node.
+            </summary>
+        </member>
+        <member name="T:reNX.NXProperties.NXLazyValuedNode`1">
+            <summary>
+                A node containing a lazily-loaded value of type <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T"> The type of the contained lazily-loaded value. </typeparam>
+        </member>
+        <member name="F:reNX.NXProperties.NXLazyValuedNode`1._value">
+            <summary>
+                The value contained in this lazily-loaded node.
+            </summary>
+        </member>
+        <member name="P:reNX.NXProperties.NXLazyValuedNode`1.Value">
+            <summary>
+                The value contained by this node. If the value has not been loaded, the value will be loaded.
+            </summary>
+        </member>
+        <member name="M:reNX.NXProperties.NXLazyValuedNode`1.LoadValue">
+            <summary>
+                Loads this value's node into memory.
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="T:reNX.NXProperties.NXValueHelper">
+            <summary>
+                This class contains methods to simplify casting and retrieving of values from NX nodes.
+            </summary>
+        </member>
+        <member name="M:reNX.NXProperties.NXValueHelper.ValueOrDefault``1(reNX.NXProperties.NXNode,``0)">
+            <summary>
+                Tries to cast this NXNode to a <see cref="T:reNX.NXProperties.NXValuedNode`1" /> and returns its value, or returns the default value if the cast is invalid.
+            </summary>
+            <typeparam name="T"> The type of the value to return. </typeparam>
+            <param name="n"> This NXNode. </param>
+            <param name="def"> The default value to return should the cast fail. </param>
+            <returns>
+                The contained value if the cast succeeds, or <paramref name="def" /> if the cast fails.
+            </returns>
+        </member>
+        <member name="M:reNX.NXProperties.NXValueHelper.ValueOrDie``1(reNX.NXProperties.NXNode)">
+            <summary>
+                Tries to cast this NXNode to a <see cref="T:reNX.NXProperties.NXValuedNode`1" /> and returns its value, or throws an
+                if the cast is invalid.
+            </summary>
+            <typeparam name="T"> The type of the value to return. </typeparam>
+            <param name="n"> This NXNode. </param>
+            <returns> The contained value if the cast succeeds. </returns>
+        </member>
+        <member name="T:reNX.NXProperties.NXBitmapNode">
+            <summary>
+                An optionally lazily-loaded bitmap node, containing a bitmap.
+            </summary>
+        </member>
+        <member name="M:reNX.NXProperties.NXBitmapNode.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:reNX.NXProperties.NXBitmapNode.Finalize">
+            <summary>
+                Destructor.
+            </summary>
+        </member>
+        <member name="M:reNX.NXProperties.NXBitmapNode.LoadValue">
+            <summary>
+                Loads the bitmap into memory.
+            </summary>
+            <returns>
+                The bitmap, as a <see cref="T:System.Drawing.Bitmap" />
+            </returns>
+        </member>
+        <member name="T:reNX.NXProperties.NXAudioNode">
+            <summary>
+                An optionally lazily-loaded audio node, containing an audio file in a byte array.
+            </summary>
+        </member>
+        <member name="M:reNX.NXProperties.NXAudioNode.LoadValue">
+            <summary>
+                Loads the audio file into memory.
+            </summary>
+            <returns> The audio file, as a byte array. </returns>
+        </member>
+        <member name="T:reNX.NXException">
+            <summary>
+                An exception thrown when a parsing error occurs.
+            </summary>
+        </member>
+    </members>
+</doc>

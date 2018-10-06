@@ -1,0 +1,20 @@
+ARCH := $(shell getconf LONG_BIT)
+
+default: lz4
+
+all: lz4_32 lz4_64
+
+lz4: lz4.c lz4.h lz4hc.c lz4hc.h
+	gcc -c -fPIC      -O3 -march=native -I. -std=c99 -Wall -W -Wundef -Wno-implicit-function-declaration lz4hc.c lz4.c
+	gcc -shared -Wl,-soname,liblz4_$(ARCH).so -o liblz4_$(ARCH).so lz4hc.o lz4.o
+
+lz4_32: lz4.c lz4.h lz4hc.c lz4hc.h
+	gcc -c -fPIC -m32 -O3 -mtune=native -I. -std=c99 -Wall -W -Wundef -Wno-implicit-function-declaration lz4hc.c lz4.c
+	gcc -shared -Wl,-soname,liblz4_$(ARCH).so -o liblz4_$(ARCH).so lz4hc.o lz4.o
+
+lz4_64: lz4.c lz4.h lz4hc.c lz4hc.h
+	gcc -c -fPIC -m64 -O3 -mtune=native -I. -std=c99 -Wall -W -Wundef -Wno-implicit-function-declaration lz4hc.c lz4.c
+	gcc -shared -Wl,-soname,liblz4_$(ARCH).so -o liblz4_$(ARCH).so lz4hc.o lz4.o
+
+clean:
+	rm -f core *.o *.so

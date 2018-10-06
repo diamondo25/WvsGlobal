@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <ProjectGuid>{138D433A-5947-4A3D-BCA4-C3A3B02C6B09}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WvsBeta.Center</RootNamespace>
+    <AssemblyName>WvsBeta.Center</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\BinSvr\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\BinSvr\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buddy\Buddy.cs" />
+    <Compile Include="Buddy\BuddyList.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharacterPackets\MessengerPacket.cs" />
+    <Compile Include="DBAccessor\CharacterDBAccessor.cs" />
+    <Compile Include="DBAccessor\CheckDuplicateID.cs" />
+    <Compile Include="DBAccessor\DeleteCharacter.cs" />
+    <Compile Include="DBAccessor\GetCharacterData.cs" />
+    <Compile Include="DBAccessor\GetCharacterIdList.cs" />
+    <Compile Include="DBAccessor\GetEquippedItemID.cs" />
+    <Compile Include="DBAccessor\LoadAvatar.cs" />
+    <Compile Include="DBAccessor\CreateCharacter.cs" />
+    <Compile Include="DBAccessor\UpdateRank.cs" />
+    <Compile Include="DBAccessor\LoadRank.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messenger.cs" />
+    <Compile Include="PartyData\Party.cs" />
+    <Compile Include="PartyData\PartyPacket.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server Data\CenterServer.cs" />
+    <Compile Include="Server Data\CenterToCenterAcceptor.cs" />
+    <Compile Include="Server Data\CenterToCenterConnection.cs" />
+    <Compile Include="Server Data\LocalConnection.cs" />
+    <Compile Include="Server Data\LocalServer.cs" />
+    <Compile Include="Server Data\ServerConnectionAcceptor.cs" />
+    <Compile Include="Server Data\WorldServer.cs" />
+    <Compile Include="Server Data\WorldEvent.cs" />
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SemVer.MSBuild.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\log4net.ElasticSearch\src\log4net.ElasticSearch\log4net.ElasticSearch.csproj">
+      <Project>{22964cb0-8a39-41ea-807d-b5216d27df70}</Project>
+      <Name>log4net.ElasticSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WvsBeta.Common\WvsBeta.Common.csproj">
+      <Project>{2D3192B2-DD59-4B95-9F7C-932D743BC617}</Project>
+      <Name>WvsBeta.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WvsBeta.Database\WvsBeta.Database.csproj">
+      <Project>{7E353D6F-0493-4FB9-982C-358ACC42B418}</Project>
+      <Name>WvsBeta.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WvsBeta.Logger\WvsBeta.Logger.csproj">
+      <Project>{5BC0C38A-D121-42C1-B2EF-888477C6D8FA}</Project>
+      <Name>WvsBeta.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WvsBeta.MasterThread\WvsBeta.MasterThread.csproj">
+      <Project>{84164D2F-36B3-4D56-AF4A-BD12C37F71F5}</Project>
+      <Name>WvsBeta.MasterThread</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\Tespia.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

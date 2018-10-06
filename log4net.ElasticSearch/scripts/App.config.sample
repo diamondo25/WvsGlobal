@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<configuration>
+    <configSections>
+        <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+    </configSections>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+    </startup>
+    <log4net>
+        <appender name="ElasticSearchAppender" type="log4net.ElasticSearch.ElasticSearchAppender, log4net.ElasticSearch">
+            <connectionString value="Server=localhost;Index=log;Port=9200;rolling=true"/>
+            <lossy value="false" />
+            <bufferSize value="100" />
+            <evaluator type="log4net.Core.LevelEvaluator">
+                <threshold value="ERROR"/>
+            </evaluator>
+        </appender>
+        <root>
+            <level value="ALL"/>
+            <appender-ref ref="ElasticSearchAppender" />
+        </root>
+    </log4net>
+</configuration>

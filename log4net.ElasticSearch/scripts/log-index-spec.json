@@ -1,0 +1,69 @@
+{
+    "settings": {
+        "index": {
+            "number_of_shards": 1,
+            "number_of_replicas": 0
+        }
+    },
+    "mappings": {
+        "LogEvent": {
+            "properties": {
+                "timeStamp": {
+                    "type": "date",
+                    "format": "dateOptionalTime"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "messageObject": {
+                    "type": "object"
+                },
+                "exception": {
+                    "type": "object"
+                },
+                "loggerName": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "identity": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "fullInfo": {
+                    "type": "string"
+                },
+                "methodName": {
+                    "type": "string"
+                },
+                "fix": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "threadName": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
